@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "schemahero.fullname" . }}
+  labels:
+    {{- include "schemahero.labels" . | nindent 4 }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "schemahero.selectorLabels" . | nindent 6 }}
+  serviceName: ""
+  template:
+    metadata:
+      labels:
+        {{- include "schemahero.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.affinity }}
+      affinity:
+        {{ . | toYaml | nindent 10 }}
+      {{- end }}
+      containers:
+        - name: main
+          image: schemahero/schemahero-manager:{{ .Chart.AppVersion }}
+          imagePullPolicy: IfNotPresent
+          command:
+            - /manager
+            - run
+            - --enable-database-controller
+            {{- range .Values.extraArgs }}
+            {{ . }}
+            {{- end }}
+          ports:
+            - name: webhook
+              containerPort: 9876
+              protocol: TCP
+          volumeMounts:
+            - name: cert
+              mountPath: /tmp/cert
+              readOnly: true
+          env:
+            - name: POD_NAMESPACE
+              value: {{ .Release.Namespace }}
+            - name: SECRET_NAME
+              value: {{ include "schemahero.webhookSecret" . }}
+            {{- with .Values.extraEnv }}
+            {{ . | toYaml | nindent 14 }}
+            {{- end }}
+          {{- with .Values.resources }}
+          resources:
+            {{ . | toYaml | nindent 12 }}
+          {{- end }}
+      volumes:
+        - name: cert
+          secret:
+            defaultMode: 420
+            secretName: {{ include "schemahero.webhookSecret" . }}
+

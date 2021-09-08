@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '*.md'
+      - '*.puml'
+      - '.releaserc.yaml'
+      - '*.json'
+      - '.*ignore'
+
+jobs:
+  ci_job:
+    name: Continous integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: volesen/setup-skaffold@v1.1
+        with:
+          version: 'v1.32.0'
+      - name: Run linter
+        run: |
+          ./test/lint/run.sh
+      - name: Start K8s
+        uses: AbsaOSS/k3d-action@v1.5.0
+        with:
+          cluster-name: "k3d"
+          use-default-registry: false
+          args: >-
+            --config ./test/e2e/k3d.yaml
+      - name: Start PostgreSQL
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm install --wait pgsql bitnami/postgresql \
+            --set postgresqlDatabase=postgres \
+            --set postgresqlPassword=postgres \
+            --set persistence.enabled=false
+      - name: Setup local Docker registry
+        run: |
+          k3d registry create localhost --port 5000
+          docker network connect k3d-action-bridge-network k3d-localhost
+          skaffold config set default-repo localhost:5000
+      - name: Build e2e tests
+        run: |
+          skaffold build
+      - name: Deploy SchemaHero Helm chart
+        run: |
+          skaffold run
+      - name: Run e2e tests
+        run: |
+          helm test sch --logs --timeout 1m30s

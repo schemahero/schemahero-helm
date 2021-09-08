@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/schemahero/schemahero",
+  "title": "SchemaHero Helm chart values",
+
+  "definitions": {
+    "service": {
+      "type": "object", "title": "service settings",
+      "additionalProperties": false, "required": ["port"],
+      "properties": {
+        "port": {"type": "integer", "default": 443}
+      }
+    },
+    "podResources": {
+      "type": "object", "title": "pod resources",
+      "additionalProperties": false,
+      "properties": {
+        "limits": {
+          "type": "object"
+        },
+        "requests": {
+          "type": "object"
+        }
+      }
+    },
+    "podAffinity": {
+      "type": "object", "title": "pod affinity", "default": {}
+    },
+    "keyValue": {
+      "type": "object",
+      "additionalProperties": false, "required": ["name", "value"],
+      "properties": {
+        "name": { "type": "string"},
+        "value": {"type": "string"}
+      }
+    }
+  },
+
+  "type": "object", "additionalProperties": true,
+  "required": ["service", "resources"],
+  "properties": {
+    "service": {"$ref": "#/definitions/service"},
+    "extraArgs": {
+      "type": "array",  "title": "extra pod CLI arguments", "default": [],
+      "items": {"type": "string"},
+      "example": "- --log-level\n- debug"
+    },
+    "extraEnv": {
+      "type": "array", "title": "extra pod env variables", "default": [],
+      "items": {"$ref": "#/definitions/keyValue"},
+      "example": "- name: SOME_ENV\n  value: SOME_ENV_VAL"
+    },
+    "resources": {"$ref": "#/definitions/podResources"},
+    "affinity": {"$ref": "#/definitions/podAffinity"}
+  }
+}
