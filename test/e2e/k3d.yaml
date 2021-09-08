@@ -1,0 +1,19 @@
+apiVersion: k3d.io/v1alpha2
+kind: Simple
+name: k3d
+registries:
+  create: false
+  config: |
+    mirrors:
+      "localhost:5000":
+        endpoint:
+          - http://k3d-localhost:5000
+
+options:
+  k3d:
+    wait: true
+    disableLoadbalancer: true
+    disableHostIPInjection: true
+  k3s:
+    extraServerArgs:
+      - "--disable=metrics-server,servicelb,traefik"

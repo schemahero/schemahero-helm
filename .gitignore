@@ -1,0 +1,9 @@
+venv
+__pycache__
+CHANGELOG.md
+*.tgz
+node_modules
+.idea
+values-dev.yaml
+skaffold.json
+

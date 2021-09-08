@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+metadata:
+  name: schemahero-e2e
+build:
+  artifacts:
+    - image: schemahero/schemahero-e2e
+      context: ./test/e2e
+  local:
+    push: true
+deploy:
+  helm:
+    releases:
+      - name: sch
+        chartPath: .
+        wait: true
+        artifactOverrides:
+          image: schemahero/schemahero-e2e
+        imageStrategy:
+          helm: {}
+

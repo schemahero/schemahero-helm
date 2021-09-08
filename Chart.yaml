@@ -1,0 +1,7 @@
+apiVersion: v2
+name: schemahero
+description: Helm chart for SchemaHero.
+type: application
+icon: https://github.com/schemahero/schemahero/blob/main/schemahero_logo.svg
+version: 0.0.0 # chart version introspected from git release tags
+appVersion: 0.12.4

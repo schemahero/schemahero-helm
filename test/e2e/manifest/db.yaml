@@ -1,0 +1,18 @@
+apiVersion: databases.schemahero.io/v1alpha4
+kind: Database
+metadata:
+  name: testdb
+spec:
+  immediateDeploy: true
+  connection:
+    postgres:
+      host:
+        value: PGHOST
+      port:
+        value: "5432"
+      user:
+        value: postgres
+      password:
+        value: postgres
+      dbname:
+        value: postgres

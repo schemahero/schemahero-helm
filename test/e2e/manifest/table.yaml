@@ -1,0 +1,15 @@
+apiVersion: schemas.schemahero.io/v1alpha4
+kind: Table
+metadata:
+  name: testtable
+spec:
+  database: testdb
+  name: test_table
+  schema:
+    postgres:
+      primaryKey: [id]
+      columns:
+        - name: id
+          type: uuid
+        - name: first_name
+          type: text

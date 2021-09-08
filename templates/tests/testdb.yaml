@@ -1,0 +1,17 @@
+
+{{- $dict := .Values.image | default (dict "tag" .Chart.Version "repository" "schemahero-testdb") -}}
+{{- $image := printf "%s:%s" $dict.repository $dict.tag -}}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "schemahero.fullname" . }}-testdb
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  restartPolicy: Never
+  containers:
+    - name: testdb
+      image: {{ $image }}
+      args:
+        - 'pgsql-postgresql'
