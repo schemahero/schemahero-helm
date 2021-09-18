@@ -1,7 +1,64 @@
 apiVersion: v2
 name: schemahero
-description: Helm chart for SchemaHero.
+description: Install and configure SchemaHero in Kubernetes.
 type: application
-icon: https://github.com/schemahero/schemahero/blob/main/schemahero_logo.svg
 version: 0.0.0 # chart version introspected from git release tags
 appVersion: 0.12.4
+icon: https://github.com/schemahero/schemahero/blob/main/schemahero_logo.svg
+home: https://github.com/schemahero/schemahero-helm
+maintainers:
+  - name: Ievgenii Shepeliuk
+    email: eshepelyuk@gmail.com
+    url: https://github.com/eshepelyuk
+keywords:
+  - schemahero
+  - database
+  - kubernetes
+  - postgresql
+  - migration
+annotations:
+  artifacthub.io/links: |
+    - name: SchemaHero site
+      url: https://schemahero.io/
+    - name: SchemaHero source code
+      url: https://github.com/schemahero/schemahero
+
+  artifacthub.io/crds: |
+    - kind: Database
+      version: v1alpha4
+      name: database
+      displayName: Database
+      description: Database is the Schema for the databases API
+    - kind: Migration
+      version: v1alpha4
+      name: migration
+      displayName: Migration
+      description: Migration is the Schema for the migrations API
+    - kind: Table
+      version: v1alpha4
+      name: table
+      displayName: Table
+      description: Table is the Schema for the tables API
+
+  # artifacthub.io/crdsExamples: |
+  #   - apiVersion: artifact.apicur.io/v1alpha1
+  #     kind: Artifact
+  #     metadata:
+  #       name: pets-avro-example-v1
+  #     spec:
+  #       artifactId: pets-avro-record
+  #       name: pets-avro
+  #       description: "super pets avro"
+  #       type: AVRO
+  #       state: ENABLED
+  #       content: |
+  #         {"namespace": "example.avro",
+  #          "type": "record",
+  #          "name": "Pet",
+  #          "fields": [
+  #              {"name": "name", "type": "string"},
+  #              {"name": "holderId",  "type": ["int", "null"]},
+  #              {"name": "type", "type": ["string", "null"]}
+  #          ]
+  #         }
+
