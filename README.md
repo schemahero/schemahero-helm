@@ -52,3 +52,4 @@ Release job performs following actions.
 Release pipeline is implemented with
 [semantic-release](https://github.com/semantic-release/semantic-release) tool.
 
+ 
