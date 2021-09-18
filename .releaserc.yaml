@@ -22,4 +22,4 @@ plugins:
     - "@semantic-release/exec"
     - verifyConditionsCmd: "rm -rf *.tgz"
       prepareCmd: "helm package --version ${nextRelease.version} ."
-      publishCmd: "helm push schemahero-${nextRelease.version}.tgz oci://ghcr.io/schemahero/helm/schemahero"
+      publishCmd: "helm push schemahero-${nextRelease.version}.tgz oci://ghcr.io/schemahero/helm"
