@@ -11,28 +11,22 @@ The chart is published to
 [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 and can be installed only with [Helm 3](https://helm.sh/docs).
 
-For working with OCI registries - enable [OCI support](https://helm.sh/docs/topics/registries/#enabling-oci-support).
+!!! Helm version must be >= 3.7.0
+
+First, enable [OCI support](https://helm.sh/docs/topics/registries/#enabling-oci-support).
 
 ```sh
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-First, find the appropriate version from
+Choose appropriate version from
 [available releases](https://github.com/schemahero/schemahero-helm/releases) list.
 
-Then, download the chart with choosen `${VERSION}` to a local directory.
+It's recommended to install the chart into a dedicated namespace.
 
 ```sh
-helm pull oci://ghcr.io/schemahero/helm/schemahero --version ${VERSION}
-```
-
-The command above will download a file named `schemahero-${VERSION}.tgz`.
-
-After that, chart is ready to be installed (or upgraded),
-we suggest to install it into a dedicated namespace.
-
-```sh
-helm upgrade -i --wait --create-namespace -n schemahero schemahero schemahero-${VERSION}.tgz
+helm upgrade -i --wait --create-namespace -n schemahero schemahero \
+  oci://ghcr.io/schemahero/helm/schemahero --version ${VERSION}
 ```
 
 ## Configuration
