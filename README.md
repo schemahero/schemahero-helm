@@ -34,8 +34,8 @@ helm upgrade -i --wait --create-namespace -n schemahero schemahero \
 Chart parameters can be configured via [Helm values files](https://helm.sh/docs/chart_template_guide/values_files/).
 
 Check out
-[values schema](https://artifacthub.io/)
-for the available configuration options.
+[values schema](https://artifacthub.io/packages/helm/schemahero/schemahero?modal=values-schema)
+for the comprehensive list of available configuration options.
 
 ## Create new release
 
