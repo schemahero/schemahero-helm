@@ -4,7 +4,7 @@ description: Install and configure SchemaHero in Kubernetes.
 type: application
 version: 0.0.0 # chart version introspected from git release tags
 appVersion: 0.12.4
-icon: https://github.com/schemahero/schemahero/blob/main/schemahero_logo.svg
+icon: https://raw.githubusercontent.com/schemahero/schemahero/main/schemahero_logo.svg
 home: https://github.com/schemahero/schemahero-helm
 maintainers:
   - name: Ievgenii Shepeliuk
