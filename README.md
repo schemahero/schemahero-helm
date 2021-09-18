@@ -1,7 +1,9 @@
+
 # Helm chart for SchemaHero
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/schemahero/schemahero-helm/CI?label=CI%2FCD&style=for-the-badge)
 [![Current](https://img.shields.io/github/v/tag/schemahero/schemahero-helm?logo=github&sort=semver&style=for-the-badge&label=current)](https://github.com/schemahero/schemahero-helm/releases/latest)
+[![Apache 2.0](https://img.shields.io/github/license/schemahero/schemahero-helm?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
 ## Installation
 
