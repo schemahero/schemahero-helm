@@ -3,31 +3,28 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/schemahero/schemahero-helm/CI?label=CI%2FCD&style=for-the-badge)
 [![Current](https://img.shields.io/github/v/tag/schemahero/schemahero-helm?logo=github&sort=semver&style=for-the-badge&label=current)](https://github.com/schemahero/schemahero-helm/releases/latest)
+[![Artifact Hub](https://img.shields.io/endpoint?style=for-the-badge&url=https://artifacthub.io/badge/repository/schemahero)](https://artifacthub.io/packages/helm/schemahero/schemahero)
 [![Apache 2.0](https://img.shields.io/github/license/schemahero/schemahero-helm?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
 ## Installation
 
 The chart is published to
 [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-and can be installed only with [Helm 3](https://helm.sh/docs).
+and requires Helm version to be >= 3.7.0.
 
-!!! Helm version must be >= 3.7.0
+1. Enable [OCI support](https://helm.sh/docs/topics/registries/#enabling-oci-support).
+    ```sh
+    export HELM_EXPERIMENTAL_OCI=1
+    ```
 
-First, enable [OCI support](https://helm.sh/docs/topics/registries/#enabling-oci-support).
+1. Choose appropriate version from [available releases](https://github.com/schemahero/schemahero-helm/releases) list.
 
-```sh
-export HELM_EXPERIMENTAL_OCI=1
-```
+    It's recommended to install the chart into a dedicated namespace.
 
-Choose appropriate version from
-[available releases](https://github.com/schemahero/schemahero-helm/releases) list.
-
-It's recommended to install the chart into a dedicated namespace.
-
-```sh
-helm upgrade -i --wait --create-namespace -n schemahero schemahero \
-  oci://ghcr.io/schemahero/helm/schemahero --version ${VERSION}
-```
+    ```sh
+    helm upgrade -i --wait --create-namespace -n schemahero schemahero \
+      oci://ghcr.io/schemahero/helm/schemahero --version ${VERSION}
+    ```
 
 ## Configuration
 
