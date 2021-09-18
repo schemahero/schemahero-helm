@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
       - name: Login to GitHub Packages
         run: |
-          helm registry login ghcr.io -u ${{ github.repository_owner }} -p ${{ secrets.GHCR_TOKEN }}
+          helm registry login ghcr.io -u ${{ github.repository_owner }} -p ${{ secrets.GITHUB_TOKEN }}
       - uses: bahmutov/npm-install@v1.7.7
       - name: Semantic release
         run: npx semantic-release
