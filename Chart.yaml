@@ -18,9 +18,9 @@ keywords:
   - migration
 annotations:
   artifacthub.io/links: |
-    - name: SchemaHerp.io
+    - name: SchemaHero site
       url: https://schemahero.io/
-    - name: SchemaHero GitHub
+    - name: SchemaHero sources
       url: https://github.com/schemahero/schemahero
 
   artifacthub.io/crds: |
