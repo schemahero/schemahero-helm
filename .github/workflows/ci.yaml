@@ -10,8 +10,8 @@ on:
     paths-ignore:
       - '*.md'
       - '*.puml'
-
-      - '*.json'
+      - '.releaserc.yaml'
+      - 'package*.json'
       - '.*ignore'
 
 jobs:
