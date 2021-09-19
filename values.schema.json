@@ -43,7 +43,7 @@
     "extraArgs": {
       "type": "array",  "title": "extra pod CLI arguments", "default": [],
       "items": {"type": "string"},
-      "example": "- --log-level\n- debug"
+      "examples": "- --log-level\n- debug", "comment": "some comment",
     },
     "extraEnv": {
       "type": "array", "title": "extra pod env variables", "default": [],
