@@ -10,7 +10,7 @@ on:
     paths-ignore:
       - '*.md'
       - '*.puml'
-      - '.releaserc.yaml'
+
       - '*.json'
       - '.*ignore'
 
