@@ -23,7 +23,11 @@ jobs:
       - uses: volesen/setup-skaffold@v1.1
         with:
           version: 'v1.32.0'
-      - name: Run linter
+      - uses: bahmutov/npm-install@v1.7.7
+      - name: Run commit linter
+        run: |
+          npx semantic-release --plugins "semantic-release-commitlint"
+      - name: Run Helm linter
         run: |
           ./test/lint/run.sh
       - name: Start K8s

@@ -7,6 +7,7 @@ preset: "conventionalcommits"
 
 plugins:
   - '@semantic-release/commit-analyzer'
+  - 'semantic-release-commitlint'
   -
     - "@semantic-release/release-notes-generator"
     - host: "https://github.com"
