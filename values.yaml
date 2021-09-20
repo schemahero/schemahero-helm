@@ -3,8 +3,10 @@ service:
 
 extraArgs: []
 
+# name-value pairs, see https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
 extraEnv: []
 
+# See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers
 resources:
   limits:
     cpu: "1"
@@ -13,16 +15,17 @@ resources:
     cpu: 100m
     memory: 50Mi
 
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/os
-              operator: In
-              values:
-                - linux
-            - key: kubernetes.io/arch
-              operator: In
-              values:
-                - amd64
+# See https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+affinity: {}
+  # nodeAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #     nodeSelectorTerms:
+  #       - matchExpressions:
+  #           - key: kubernetes.io/os
+  #             operator: In
+  #             values:
+  #               - linux
+  #           - key: kubernetes.io/arch
+  #             operator: In
+  #             values:
+  #               - amd64

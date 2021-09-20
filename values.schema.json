@@ -13,6 +13,7 @@
     },
     "podResources": {
       "type": "object", "title": "pod resources",
+      "description": "See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
       "additionalProperties": false,
       "properties": {
         "limits": {
@@ -24,7 +25,8 @@
       }
     },
     "podAffinity": {
-      "type": "object", "title": "pod affinity", "default": {}
+      "type": "object", "title": "pod affinity", "default": {},
+      "description": "See https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity"
     },
     "keyValue": {
       "type": "object",
