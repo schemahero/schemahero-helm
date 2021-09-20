@@ -17,7 +17,7 @@ and requires Helm version to be >= 3.7.0.
     export HELM_EXPERIMENTAL_OCI=1
     ```
 
-1. Choose appropriate version from [available releases](https://github.com/schemahero/schemahero-helm/releases) list.
+1. Choose appropriate version from the [available releases](https://github.com/schemahero/schemahero-helm/releases).
 
     It's recommended to install the chart into a dedicated namespace.
 
@@ -49,7 +49,7 @@ Release job performs following actions.
 1. Generates Helm chart with assigned version.
 1. Publishes Helm chart to GitHub Packages repository.
 
-Release pipeline is implemented with
+Release pipeline is powered by
 [semantic-release](https://github.com/semantic-release/semantic-release) tool.
 
- 
+
