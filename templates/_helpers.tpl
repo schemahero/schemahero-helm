@@ -3,7 +3,7 @@
 {{- end -}}
 
 {{- define "schemahero.labels" -}}
-helm.sh/chart: {{ printf "%s-%s" .Chart.Name .Chart.AppVersion }}
+helm.sh/chart: {{ printf "%s-%s" .Chart.Name .Chart.Version }}
 {{ include "schemahero.selectorLabels" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
