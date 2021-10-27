@@ -3,7 +3,7 @@ name: schemahero
 description: Install and configure SchemaHero in Kubernetes.
 type: application
 version: 0.0.0 # chart version introspected from git release tags
-appVersion: 0.12.4
+appVersion: 0.12.6
 icon: https://raw.githubusercontent.com/schemahero/schemahero/main/artwork/color/svg/schemahero-logomark-color.svg
 home: https://github.com/schemahero/schemahero-helm
 maintainers:
@@ -39,26 +39,4 @@ annotations:
       name: table
       displayName: Table
       description: Table is the Schema for the tables API
-
-  # artifacthub.io/crdsExamples: |
-  #   - apiVersion: artifact.apicur.io/v1alpha1
-  #     kind: Artifact
-  #     metadata:
-  #       name: pets-avro-example-v1
-  #     spec:
-  #       artifactId: pets-avro-record
-  #       name: pets-avro
-  #       description: "super pets avro"
-  #       type: AVRO
-  #       state: ENABLED
-  #       content: |
-  #         {"namespace": "example.avro",
-  #          "type": "record",
-  #          "name": "Pet",
-  #          "fields": [
-  #              {"name": "name", "type": "string"},
-  #              {"name": "holderId",  "type": ["int", "null"]},
-  #              {"name": "type", "type": ["string", "null"]}
-  #          ]
-  #         }
 
