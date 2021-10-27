@@ -20,7 +20,7 @@ plugins:
     - successComment: false
       failComment: false
   -
-    - "@semantic-release/exec"
-    - verifyConditionsCmd: "rm -rf *.tgz"
-      prepareCmd: "helm package --version ${nextRelease.version} ."
-      publishCmd: "helm push schemahero-${nextRelease.version}.tgz oci://ghcr.io/schemahero/helm"
+    - '@eshepelyuk/semantic-release-helm-oci'
+    - registry: oci://ghcr.io/schemahero/helm
+      skipAppVersion: true
+
