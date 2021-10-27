@@ -13,6 +13,7 @@ on:
       - '.releaserc.yaml'
       - 'package*.json'
       - '.*ignore'
+      - '.github/workflows/release.yaml'
 
 jobs:
   ci_job:
@@ -26,7 +27,7 @@ jobs:
       - uses: bahmutov/npm-install@v1.7.7
       - name: Run commit linter
         run: |
-          npx semantic-release --plugins "semantic-release-commitlint"
+          npx semantic-release -p semantic-release-commitlint
       - name: Run Helm linter
         run: |
           ./test/lint/run.sh
