@@ -42,9 +42,8 @@ jobs:
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
           helm install --wait pgsql bitnami/postgresql \
-            --set postgresqlDatabase=postgres \
-            --set postgresqlPassword=postgres \
-            --set persistence.enabled=false
+            --set auth.postgresPassword=postgres \
+            --set primary.persistence.enabled=false
       - name: Setup local Docker registry
         run: |
           k3d registry create localhost --port 5000
