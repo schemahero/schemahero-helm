@@ -35,6 +35,10 @@
         "name": { "type": "string"},
         "value": {"type": "string"}
       }
+    },
+    "registry": {
+      "type": "string",
+      "description": "Alternate container registry"
     }
   },
 
