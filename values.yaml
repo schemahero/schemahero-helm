@@ -1,6 +1,9 @@
 service:
   port: 443
 
+# Defaults to Docker Hub
+registry: ""
+
 extraArgs: []
 
 # name-value pairs, see https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/

@@ -21,7 +21,7 @@ spec:
       {{- end }}
       containers:
         - name: main
-          image: schemahero/schemahero-manager:{{ .Chart.AppVersion }}
+          image: {{ .Values.registry }}schemahero/schemahero-manager:{{ .Chart.AppVersion }}
           imagePullPolicy: IfNotPresent
           command:
             - /manager
