@@ -36,9 +36,26 @@
         "value": {"type": "string"}
       }
     },
-    "registry": {
-      "type": "string",
-      "description": "Alternate container registry"
+    "image": {
+      "type": "object",
+      "title": "Schemahero manager image settings",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Schemahero manager image name",
+          "default": "schemahero/schemahero-manager"
+        },
+        "tag": {
+          "type": "string",
+          "description": "Schemahero manager image tag, substituted with `.Chart.AppVersion` if unspecified"
+        },
+        "registry": {
+          "type": "string",
+          "description": "Alternate container registry"
+        }
+      }
     }
   },
 

@@ -1,8 +1,12 @@
 service:
   port: 443
 
-# Defaults to Docker Hub
-registry: ""
+image:
+  name: schemahero/schemahero-manager
+  # Will use .Chart.AppVersion by default
+  tag: ""
+  # Defaults to Docker Hub
+  registry: ""
 
 extraArgs: []
 

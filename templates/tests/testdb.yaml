@@ -1,5 +1,6 @@
-
-{{- $dict := .Values.image | default (dict "tag" .Chart.Version "repository" "schemahero-testdb") -}}
+---
+{{/* These tags are overrided during tests */}}
+{{- $dict := .Values.tests_image | default (dict "tag" .ChartVersion "repository" "schemahero-testdb") -}}
 {{- $image := printf "%s:%s" $dict.repository $dict.tag -}}
 apiVersion: v1
 kind: Pod
