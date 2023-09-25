@@ -5,7 +5,8 @@
 {{- define "schemahero.labels" -}}
 helm.sh/chart: {{ printf "%s-%s" .Chart.Name .Chart.Version }}
 {{ include "schemahero.selectorLabels" . }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{/* If image is passed with @sha256 part, we don't want it in labels */}}
+app.kubernetes.io/version: {{ index (regexSplit "@sha256:" (.Values.image.tag | default .Chart.AppVersion) -1) 0 | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
