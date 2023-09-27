@@ -151,3 +151,23 @@ rules:
   - get
   - update
   - patch
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - views
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - views/status
+  verbs:
+  - get
+  - update
+  - patch
