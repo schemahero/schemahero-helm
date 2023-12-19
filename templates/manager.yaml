@@ -28,7 +28,7 @@ spec:
             - run
             - --enable-database-controller
             {{- range .Values.extraArgs }}
-            {{ . }}
+            - {{ . }}
             {{- end }}
           ports:
             - name: webhook
