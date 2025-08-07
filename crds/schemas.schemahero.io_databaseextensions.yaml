@@ -4,26 +4,19 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-  name: migrations.schemas.schemahero.io
+  name: databaseextensions.schemas.schemahero.io
 spec:
   group: schemas.schemahero.io
   names:
-    kind: Migration
-    listKind: MigrationList
-    plural: migrations
-    singular: migration
+    kind: DatabaseExtension
+    listKind: DatabaseExtensionList
+    plural: databaseextensions
+    singular: databaseextension
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
-    - jsonPath: .spec.databaseName
+    - jsonPath: .spec.database
       name: Database
-      type: string
-    - jsonPath: .spec.tableName
-      name: Table
-      type: string
-    - jsonPath: .metadata.namespace
-      name: Namespace
-      priority: 1
       type: string
     - jsonPath: .status.phase
       name: Phase
@@ -34,7 +27,7 @@ spec:
     name: v1alpha4
     schema:
       openAPIV3Schema:
-        description: Migration is the Schema for the migrations API
+        description: DatabaseExtension is the Schema for the databaseextensions API
         properties:
           apiVersion:
             description: |-
@@ -54,54 +47,37 @@ spec:
           metadata:
             type: object
           spec:
-            description: MigrationSpec defines the desired state of Migration
             properties:
-              databaseName:
+              database:
                 type: string
-              editedDDL:
-                type: string
-              generatedDDL:
-                type: string
-              tableName:
-                type: string
-              tableNamespace:
-                type: string
+              postgres:
+                properties:
+                  name:
+                    type: string
+                  schema:
+                    type: string
+                  version:
+                    type: string
+                required:
+                - name
+                type: object
+              removeOnDeletion:
+                type: boolean
             required:
-            - tableName
-            - tableNamespace
+            - database
             type: object
           status:
-            description: MigrationStatus defines the observed state of Migration
             properties:
-              approvedAt:
+              appliedAt:
                 format: int64
                 type: integer
-              executedAt:
-                format: int64
-                type: integer
-              invalidatedAt:
-                description: InvalidatedAt is the unix nano timestamp when this plan
-                  was determined to be invalid or outdated
-                format: int64
-                type: integer
-              phase:
-                enum:
-                - PLANNED
-                - APPROVED
-                - EXECUTED
-                - INVALID
-                - REJECTED
+              message:
                 type: string
-              plannedAt:
-                description: PlannedAt is the unix nano timestamp when the plan was
-                  generated
-                format: int64
-                type: integer
-              rejectedAt:
-                format: int64
-                type: integer
+              phase:
+                type: string
             type: object
         type: object
     served: true
     storage: true
-    subresources: {}
+    subresources:
+      status: {}
