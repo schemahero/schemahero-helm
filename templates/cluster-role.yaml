@@ -171,3 +171,63 @@ rules:
   - get
   - update
   - patch
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - databaseextensions
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - databaseextensions/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - datatypes
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - datatypes/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - functions
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - schemas.schemahero.io
+  resources:
+  - functions/status
+  verbs:
+  - get
+  - update
+  - patch
