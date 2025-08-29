@@ -20,11 +20,11 @@ jobs:
     name: Continous integration
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - uses: volesen/setup-skaffold@v1.1
         with:
           version: 'v1.32.0'
-      - uses: bahmutov/npm-install@v1.7.7
+      - uses: bahmutov/npm-install@v1.10.10
       - name: Run commit linter
         run: |
           npx semantic-release -p semantic-release-commitlint
