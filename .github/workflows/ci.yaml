@@ -32,16 +32,15 @@ jobs:
         run: |
           ./test/lint/run.sh
       - name: Start K8s
-        uses: AbsaOSS/k3d-action@v1.5.0
+        uses: AbsaOSS/k3d-action@v2.4.0
         with:
+          k3d-version: v5.8.3
           cluster-name: "k3d"
-          use-default-registry: false
           args: >-
             --config ./test/e2e/k3d.yaml
       - name: Start PostgreSQL
         run: |
-          helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm install --wait pgsql bitnami/postgresql \
+          helm install --wait --version 16.7.27 pgsql oci://registry-1.docker.io/bitnamicharts/postgresql \
             --set auth.postgresPassword=postgres \
             --set primary.persistence.enabled=false
       - name: Setup local Docker registry

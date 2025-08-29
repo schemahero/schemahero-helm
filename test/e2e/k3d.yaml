@@ -1,19 +1,26 @@
-apiVersion: k3d.io/v1alpha2
+apiVersion: k3d.io/v1alpha5
 kind: Simple
-name: k3d
+kubeAPI: {}
+metadata:
+  name: k3d
+options:
+  k3d:
+    disableImageVolume: false
+    disableLoadbalancer: true
+    disableRollback: false
+    loadbalancer: {}
+    wait: true
+  k3s:
+    extraArgs:
+    - arg: --disable=metrics-server,servicelb,traefik
+      nodeFilters:
+      - server:*
+  kubeconfig: {}
+  runtime:
+    HostPidMode: false
 registries:
-  create: false
   config: |
     mirrors:
       "localhost:5000":
         endpoint:
           - http://k3d-localhost:5000
-
-options:
-  k3d:
-    wait: true
-    disableLoadbalancer: true
-    disableHostIPInjection: true
-  k3s:
-    extraServerArgs:
-      - "--disable=metrics-server,servicelb,traefik"
