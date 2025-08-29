@@ -2,17 +2,22 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://github.com/schemahero/schemahero",
   "title": "SchemaHero Helm chart values",
-
   "definitions": {
     "service": {
-      "type": "object", "title": "service settings",
-      "additionalProperties": false, "required": ["port"],
+      "type": "object",
+      "title": "service settings",
+      "additionalProperties": false,
+      "required": ["port"],
       "properties": {
-        "port": {"type": "integer", "default": 443}
+        "port": {
+          "type": "integer",
+          "default": 443
+        }
       }
     },
     "podResources": {
-      "type": "object", "title": "pod resources",
+      "type": "object",
+      "title": "pod resources",
       "description": "See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
       "additionalProperties": false,
       "properties": {
@@ -25,15 +30,22 @@
       }
     },
     "podAffinity": {
-      "type": "object", "title": "pod affinity", "default": {},
+      "type": "object",
+      "title": "pod affinity",
+      "default": {},
       "description": "See https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity"
     },
     "keyValue": {
       "type": "object",
-      "additionalProperties": false, "required": ["name", "value"],
+      "additionalProperties": false,
+      "required": ["name", "value"],
       "properties": {
-        "name": { "type": "string"},
-        "value": {"type": "string"}
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
       }
     },
     "image": {
@@ -58,22 +70,36 @@
       }
     }
   },
-
-  "type": "object", "additionalProperties": true,
+  "type": "object",
+  "additionalProperties": true,
   "required": ["service", "resources"],
   "properties": {
-    "service": {"$ref": "#/definitions/service"},
+    "service": {
+      "$ref": "#/definitions/service"
+    },
     "extraArgs": {
-      "type": "array",  "title": "extra pod CLI arguments", "default": [],
-      "items": {"type": "string"},
-      "examples": "- --log-level\n- debug", "comment": "some comment"
+      "type": "array",
+      "title": "extra pod CLI arguments",
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "examples": ["- --log-level\n- debug"]
     },
     "extraEnv": {
-      "type": "array", "title": "extra pod env variables", "default": [],
-      "items": {"$ref": "#/definitions/keyValue"},
+      "type": "array",
+      "title": "extra pod env variables",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/keyValue"
+      },
       "example": "- name: SOME_ENV\n  value: SOME_ENV_VAL"
     },
-    "resources": {"$ref": "#/definitions/podResources"},
-    "affinity": {"$ref": "#/definitions/podAffinity"}
+    "resources": {
+      "$ref": "#/definitions/podResources"
+    },
+    "affinity": {
+      "$ref": "#/definitions/podAffinity"
+    }
   }
 }

@@ -3,7 +3,7 @@ name: schemahero
 description: Install and configure SchemaHero in Kubernetes.
 type: application
 version: 0.0.0 # chart version introspected from git release tags
-appVersion: 0.17.12
+appVersion: 0.22.1
 icon: https://raw.githubusercontent.com/schemahero/schemahero/main/artwork/color/svg/schemahero-logomark-color.svg
 home: https://github.com/schemahero/schemahero-helm
 maintainers:
@@ -39,4 +39,18 @@ annotations:
       name: table
       displayName: Table
       description: Table is the Schema for the tables API
-
+    - kind: DataType
+      version: v1alpha4
+      name: datatype
+      displayName: DataType
+      description: DataType is the Schema for the datatypes API
+    - kind: DatabaseExtension
+      version: v1alpha4
+      name: databaseextension
+      displayName: DatabaseExtension
+      description: DatabaseExtension is the Schema for the databaseextensions API
+    - kind: Function
+      version: v1alpha4
+      name: function
+      displayName: Function
+      description: Function is the Schema for the functions API
