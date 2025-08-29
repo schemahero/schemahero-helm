@@ -46,7 +46,6 @@ jobs:
       - name: Setup local Docker registry
         run: |
           k3d registry create localhost --port 5000
-          docker network connect k3d-action-bridge-network k3d-localhost
           skaffold config set default-repo localhost:5000
       - name: Build e2e tests
         run: |
