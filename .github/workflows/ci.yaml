@@ -45,7 +45,7 @@ jobs:
             --set primary.persistence.enabled=false
       - name: Setup local Docker registry
         run: |
-          k3d registry create localhost --port 5000
+          k3d registry create localhost --port 5000 --default-network k3d-k3d
           skaffold config set default-repo localhost:5000
       - name: Build e2e tests
         run: |
